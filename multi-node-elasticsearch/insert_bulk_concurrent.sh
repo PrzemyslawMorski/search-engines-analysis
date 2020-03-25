@@ -1,0 +1,10 @@
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &
+curl -X POST -H "Content-Type: application/json" -T $1 "http://localhost:9200/bank/_bulk?pretty&refresh" | grep "took" &

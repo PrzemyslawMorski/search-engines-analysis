@@ -1,0 +1,75 @@
+version: "3.7"
+services:
+  elasticsearch_master:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
+    container_name: elasticsearch_master
+    environment:
+      - cluster.name=elasticsearch_cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch_data_master:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elasticsearch_network
+
+  elasticsearch_slave:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
+    container_name: elasticsearch_slave
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    environment:
+      - cluster.name=elasticsearch_cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch_data_slave:/usr/share/elasticsearch/data
+    networks:
+      - elasticsearch_network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.6.1
+    container_name: kibana
+    environment:
+      SERVER_NAME: kibana.local
+      ELASTICSEARCH_URL: http://elasticsearch_master:9200
+    ports:
+      - 5601:5601
+    networks:
+      - elasticsearch_network
+
+  headPlugin:
+    image: mobz/elasticsearch-head:5
+    container_name: head
+    ports:
+      - "9100:9100"
+    networks:
+      - elasticsearch_network
+
+volumes:
+  elasticsearch_data_master:
+    driver: local
+  elasticsearch_data_slave:
+    driver: local
+
+networks:
+  elasticsearch_network:
