@@ -1,0 +1,12 @@
+Notatki: 
+- https://docs.google.com/document/d/1soTHORlSBFMZ2zEEnftGkJxZe4HVB3gkKs0KN92a7BQ/edit - sekcja lessons learned
+- wykresy maja być liniowe a nie punktowe
+- skala logarytmiczna
+- jak oceniac relewację (trzeba miec kilka podejść):
+	- ręcznie dla zapytania, które zwraca mało wyników (subiektywna relewancja)
+	- bierzemy źródło i przelatujemy je grepem i sprawdzamy co wyszło, z tym co silnik zwrócił
+	- jak szukamy 'python' w tytułach to, można sprawdzić, czy w treści jest np. 'programowanie'
+	- z silników dostajemy jakieś wyniki, jeżeli jakiś wynik powtórzył się w innym silniku = relewantny, jeżeli nie, to jest nierelewantny
+	- konfrontacja z oficjalną wyszukiwarką dla źródła
+	- Google Custom Search
+- trzeba mieć kilka podejść i porównać co jakim sposobem nam wyszło
