@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+
+  document_indexer:
+    image: curlimages/curl
+    networks:
+      - multi-node-elasticsearch_elastic
+    volumes:
+      - ./documents_bulk_elasticsearch.json:/usr/share/documents/documents_bulk_elasicsearch.json
+      - ./document_indexer_entrypoint.sh:/document_indexer_entrypoint.sh
+    entrypoint: "sh /document_indexer_entrypoint.sh"
+
+networks:
+  multi-node-elasticsearch_elastic:
+    external: true
