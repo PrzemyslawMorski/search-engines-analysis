@@ -1,1 +1,3 @@
 /docker/data/
+/scripts/documents_bulk*
+/scripts/test*
