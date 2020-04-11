@@ -6,7 +6,6 @@ from elasticsearch.helpers import streaming_bulk
 ELASTICSEARCH_URL = os.getenv('ELASTICSEARCH_URL', 'localhost:9200')
 DATASET_PATH = os.getenv('DATASET_PATH', 'documents_bulk.json')
 INSERT_CHUNK_SIZE = int(os.getenv('INSERT_CHUNK_SIZE', '500'))
-INSERT_CHUNK_SIZE = int(os.getenv('INSERT_CHUNK_SIZE', '500'))
 
 def generate_documents():
     with open(DATASET_PATH, "r", encoding="utf8") as f:
@@ -15,6 +14,7 @@ def generate_documents():
 
 def main():
     client = Elasticsearch(
+        timeout=30,
         hosts=[ELASTICSEARCH_URL]
     )
 

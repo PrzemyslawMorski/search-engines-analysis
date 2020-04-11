@@ -1,2 +1,1 @@
-docker-compose -f .\docker-compose.document_indexer.yml up
-docker-compose -f .\docker-compose.document_indexer.yml down -v
+docker run --rm -e "ELASTICSEARCH_URL=es01:9200" --network "multi-node-elasticsearch_elastic" pmorski/news_articles_document_indexer
