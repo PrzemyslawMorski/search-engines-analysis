@@ -1,5 +1,5 @@
 .vscode
 
-documents_bulk.json
+documents_bulk*.json
 
 sample_output*.json
