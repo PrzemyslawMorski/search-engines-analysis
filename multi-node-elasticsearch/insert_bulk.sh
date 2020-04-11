@@ -1,1 +1,0 @@
-curl -XPUT 'localhost:9201/companydatabase/_bulk' -H 'Content-Type: application/json' --data-binary @documents_bulk.json
