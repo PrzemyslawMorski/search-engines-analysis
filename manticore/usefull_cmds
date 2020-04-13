@@ -1,0 +1,11 @@
+sed 's/\\\"/\\\\\"/g' -i docs2.sql 
+
+echo "mysql -u root -ppassword < /tmp/data/schema.sql" | docker exec -u mysql manticore_db /bin/bash -
+mysql -u root -ppassword < /tmp/data/schema.sql
+
+echo "head -n 30000 /tmp/data/docs2.sql | mysql manticore -u root -ppassword" | docker exec -u mysql manticore_db /bin/bash -
+head -n 30000 /tmp/data/docs2.sql | mysql manticore -u root -ppassword
+
+
+docker exec -t manticore_db /bin/sh -c "mysql -u root -ppassword < /tmp/data/schema.sql"
+docker exec -t manticore_db /bin/sh -c "head -n 30000 /tmp/data/documents_final.sql | mysql manticore -u root -ppassword"
