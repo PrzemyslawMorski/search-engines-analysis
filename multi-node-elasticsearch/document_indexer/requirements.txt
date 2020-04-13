@@ -1,3 +1,0 @@
-elasticsearch
-urllib3
-tqdm

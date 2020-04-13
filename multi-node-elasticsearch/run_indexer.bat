@@ -1,1 +1,3 @@
-docker run --rm -e "ELASTICSEARCH_URL=es01:9200" --network "multi-node-elasticsearch_elastic" pmorski/news_articles_document_indexer
+cd document_indexer
+sh insert_bulk
+cd ..
