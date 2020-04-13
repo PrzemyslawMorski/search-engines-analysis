@@ -1,11 +1,22 @@
+## Data migration
+
+python3 script.py
 sed 's/\\\"/\\\\\"/g' -i docs2.sql 
 
-echo "mysql -u root -ppassword < /tmp/data/schema.sql" | docker exec -u mysql manticore_db /bin/bash -
-mysql -u root -ppassword < /tmp/data/schema.sql
 
-echo "head -n 30000 /tmp/data/docs2.sql | mysql manticore -u root -ppassword" | docker exec -u mysql manticore_db /bin/bash -
-head -n 30000 /tmp/data/docs2.sql | mysql manticore -u root -ppassword
 
+## MYSQL
 
 docker exec -t manticore_db /bin/sh -c "mysql -u root -ppassword < /tmp/data/schema.sql"
 docker exec -t manticore_db /bin/sh -c "head -n 30000 /tmp/data/documents_final.sql | mysql manticore -u root -ppassword"
+
+docker exec -t manticore_db /bin/sh -c "echo 'select count(*) from blog;' | mysql manticore -u root -ppassword"
+
+## Manticore 
+
+docker exec -t -u manticore manticore_search /bin/sh -c "indexer financial_news" >> index.log
+
+docker exec -it -u manticore manticore_search bash
+
+https://transfer.sh/IQk0n/data.tar.gz
+
