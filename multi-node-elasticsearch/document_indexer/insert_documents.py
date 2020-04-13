@@ -18,6 +18,12 @@ def main():
         hosts=[ELASTICSEARCH_URL]
     )
 
+    client.indices.create('news_articles', body={
+        "settings": {
+            "number_of_shards": 4
+        }
+    })
+
     with open(DATASET_PATH, "r", encoding="utf8") as f:
         number_of_docs = sum([1 for _ in f]) - 1
 
