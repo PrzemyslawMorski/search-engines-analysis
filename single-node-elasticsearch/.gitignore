@@ -1,4 +1,5 @@
 /docker/data/
 /scripts/documents_bulk*
 /scripts/test*
+output/
 output*.json
