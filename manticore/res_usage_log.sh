@@ -1,5 +1,9 @@
 #!/bin/bash
 
-grep 'cpu ' /proc/stat | awk '{usage=($2+$4)100/($2+$4+$5)} END {print "CPU: " usage "%"}'
+log_file=$1
 
-free -m | awk 'NR==2{printf "Memory: %s/%sMB (%.3f%%)\n", $3,$2,$3100/$2 }'
+while true; do
+    stats=$(docker stats --all --no-stream --format "table {{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}" manticore_search)
+    echo -e "$stats\n" >> $log_file
+    sleep 1; 
+done

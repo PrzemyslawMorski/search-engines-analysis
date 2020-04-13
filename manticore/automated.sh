@@ -1,36 +1,67 @@
 #!/bin/bash
 
 mysql_node=$1
-
 manticore_node=$2
 
+mysql_node="ip172-18-0-28-bqacfeqosm4g0088r9k0@direct.labs.play-with-docker.com"
+manticore_node="ip172-18-0-44-bqacfeqosm4g0088r9k0@direct.labs.play-with-docker.com"
+
 function mysql() {
-    return $(ssh $mysql_node $1)
+
+    output=$(ssh $mysql_node $1)
+    echo $output
 }
 
 function manticore() {
-    ssh $manticore_node $1
+
+    output=$(ssh $manticore_node $1)
+    echo $output
 }
 
-for i in {15000..45000..15000}
-    do 
-        mysql_command = "\"head -n $i /tmp/data/splited/merged.sql | tail -n 15000 | mysql manticore -u root -ppassword\""
-        mysql "docker exec -t manticore_db /bin/sh -c $mysql_command"
 
-        count=$(mysql "docker exec -t manticore_db /bin/sh -c \"echo 'select count(*) from blog;' | mysql manticore -u root -ppassword\"" | tail -n 1)
+function main() {
 
-        while [ "$count" -ne "$i" ]; do
-            sleep 2
-            count=$(mysql "docker exec -t manticore_db /bin/sh -c \"echo 'select count(*) from blog;' | mysql manticore -u root -ppassword\"" | tail -n 1)
+    echo "Reset schema"
+
+    mysql "docker exec -t manticore_db /bin/sh -c \"mysql -u root -ppassword < /tmp/data/schema.sql\""
+
+    for i in {15000..45000..15000}
+        do 
+            mysql_command="\"head -n $i /tmp/data/splited/merged.sql | tail -n 15000 | mysql manticore -u root -ppassword\""
+
+            echo "Input to DB - $i"
+
+            mysql "docker exec -t manticore_db /bin/sh -c $mysql_command"
+
+            echo "Get count from DB"
+
+            count=$(mysql "docker exec -t manticore_db /bin/sh -c \"echo 'select count(*) from blog;' | mysql manticore -u root -ppassword\"" | tail -n 1 | sed -nr 's/[^0-9]*([0-9]+).*/\1/p')
+
+            echo "Count: $count"
+
+            while [ "$count" -ne "$i" ]; do
+                echo "Count not ok: $count != $i"
+                sleep 2
+                echo "Get count from DB (while)"
+                count=$(mysql "docker exec -t manticore_db /bin/sh -c \"echo 'select count(*) from blog;' | mysql manticore -u root -ppassword\"" | tail -n 1 | sed -nr 's/[^0-9]*([0-9]+).*/\1/p')
+                echo "Count: $count"
+            done
+
+            echo "Create dir /root/logs/$i"
+            manticore "mkdir -p /root/logs/$i"
+
+            echo "Run res_usage_output.sh"
+            res_usage_out=$(manticore "/root/search-engines-analysis/manticore/res.sh /root/logs/$i/res_usage_$i.log")
+
+            echo "Run indexer"
+
+            manticore "docker exec -t -u manticore manticore_search /bin/sh -c \"indexer financial_news\" >> /root/logs/$i/indexer_$i.log"
+            
+            echo "Kill res_usage_output.sh"
+
+            manticore "pkill res_usage_log"
         done
+}
 
-        res_usage_out=$(manticore "while true; do /root/search-engines-analysis/manticore/res_usage_log.sh >> /root/logs/$i/res_usage_$i.log; sleep 1; done")
-        res_usage_pid="${res_usage_out:4:5}"
-
-        manticore "mkdir -p /root/logs/$i"
-        manticore "docker exec -t -u manticore manticore_search /bin/sh -c \"indexer financial_news\" >> /root/logs/indexer_$i.log"
-        
-        manticore "kill $res_usage_pid"
-    done
-
+main
 
