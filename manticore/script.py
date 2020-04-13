@@ -2,10 +2,10 @@
 
 import json
 
-with open('./data/documents_bulk.json') as json_file:
+with open('./data/documents.json') as json_file:
     data = json.load(json_file)
 
-    with open("./data/documents_final.sql", "a") as myfile:
+    with open("./data/documents.sql", "a") as myfile:
 
         i = 1
         for row in data:
