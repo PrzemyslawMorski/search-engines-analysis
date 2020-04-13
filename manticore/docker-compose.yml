@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    container_name: manticore_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - manticore-db:/var/lib/mysql
+      - ./data:/tmp/data
+    
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  manticore:
+    image: manticoresearch/manticore
+    container_name: manticore_search
+    restart: always
+    volumes:
+      - ./etc/:/etc/manticoresearch/
+    ports:
+      - '9306:9306'
+      - '9308:9308'
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+      memlock:
+        soft: -1
+        hard: -1
+
+volumes:
+  manticore-db:
+
