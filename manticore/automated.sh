@@ -25,7 +25,7 @@ function main() {
 
     mysql "docker exec -t manticore_db /bin/sh -c \"mysql -u root -ppassword < /tmp/data/schema.sql\""
 
-    for i in {15000..45000..15000}
+    for i in {15000..315000..15000}
         do 
             mysql_command="\"head -n $i /tmp/data/splited/merged.sql | tail -n 15000 | mysql manticore -u root -ppassword\""
 
@@ -55,7 +55,7 @@ function main() {
 
             echo "Run indexer"
 
-            manticore "docker exec -t -u manticore manticore_search /bin/sh -c \"indexer financial_news\" >> /root/logs/$i/indexer_$i.log"
+            manticore "docker exec -t -u manticore manticore_search /bin/sh -c \"indexer financial_news --rotate\" >> /root/logs/$i/indexer_$i.log"
             
             echo "Kill res_usage_output.sh"
 

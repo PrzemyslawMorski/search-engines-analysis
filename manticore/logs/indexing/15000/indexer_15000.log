@@ -1,0 +1,16 @@
+Manticore 3.4.2 69033058@200410 release
+Copyright (c) 2001-2016, Andrew Aksyonoff
+Copyright (c) 2008-2016, Sphinx Technologies Inc (http://sphinxsearch.com)
+Copyright (c) 2017-2020, Manticore Software LTD (http://manticoresearch.com)
+
+using config file '/etc/manticoresearch/manticore.conf'...
+indexing index 'financial_news'...
+collected 1000 docs, 2.5 MBcollected 2000 docs, 5.2 MBcollected 3000 docs, 7.5 MBcollected 4000 docs, 9.8 MBcollected 5000 docs, 12.1 MBcollected 6000 docs, 14.5 MBcollected 7000 docs, 16.9 MBcollected 8000 docs, 19.2 MBcollected 9000 docs, 21.6 MBcollected 10000 docs, 24.1 MBcollected 11000 docs, 26.5 MBcollected 12000 docs, 28.6 MBcollected 13000 docs, 30.8 MBcollected 14000 docs, 33.0 MBcollected 15000 docs, 35.2 MBcollected 15000 docs, 35.2 MB
+creating lookup: 10.0 Kdocs, 66.7% donecreating lookup: 15.0 Kdocs, 100.0% done
+creating histograms: 0.0 Kdocs, 0.0% donecreating histograms: 10.0 Kdocs, 66.7% donecreating histograms: 15.0 Kdocs, 100.0% done
+sorted 1.0 Mhits, 17.5% donesorted 2.0 Mhits, 35.1% donesorted 3.0 Mhits, 52.6% donesorted 4.0 Mhits, 70.2% donesorted 5.0 Mhits, 87.7% donesorted 5.7 Mhits, 100.0% done
+total 15000 docs, 35206125 bytes
+total 4.050 sec, 8690823 bytes/sec, 3702.83 docs/sec
+total 11 reads, 0.019 sec, 2123.5 kb/call avg, 1.7 msec/call avg
+total 160 writes, 0.045 sec, 441.6 kb/call avg, 0.2 msec/call avg
+rotating indices: successfully sent SIGHUP to searchd (pid=1).
