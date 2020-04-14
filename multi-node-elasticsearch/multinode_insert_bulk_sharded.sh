@@ -36,7 +36,7 @@ do
 done
 
 echo "DATA INSERTED YEEEY"
-echo $(curl -XGET http://$ELASTICSEARCH_URL/news_articles/_stats/indexing) >> indexing-times.txt
+echo $(curl -XGET http://$ELASTICSEARCH_URL/news_articles/_stats/indexing) >> logs/indexing-times.txt
 
 echo "RESULTS FILE:"
 cat indexing-times.txt
