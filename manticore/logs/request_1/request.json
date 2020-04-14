@@ -1,0 +1,13 @@
+// http://ip172-18-0-77-bqav6ltim9m000a0iip0-9308.direct.labs.play-with-docker.com/json/search
+
+{
+	"index": "financial_news",
+	"limit": 1000,
+	"max_matches": 1000,
+	"query":
+			{
+			  "match": { 
+			  	"title": "market" 
+			  }
+			}
+}
