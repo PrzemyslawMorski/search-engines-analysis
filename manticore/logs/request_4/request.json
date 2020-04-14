@@ -1,0 +1,11 @@
+{
+	"index": "financial_news",
+	"limit": 1000,
+	"max_matches": 1000,
+	"query":
+			{
+			  "match": { 
+			  	"_all": "Which is the largest market in the world?" 
+			  }
+			}
+}
