@@ -1,0 +1,8 @@
+{
+  "_source": ["uuid"],
+  "size": 1000,
+  "query": { "match_phrase": { "text": "market" } },
+  "sort": [
+    { "_score": { "order": "desc" }}
+  ]
+}
