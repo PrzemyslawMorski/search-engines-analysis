@@ -1,0 +1,7 @@
+{
+  "query": { "match_all": {} },
+  "sort": [
+    { "published": "asc" },
+    { "thread.social.facebook.shares": "asc" }
+  ]
+}
