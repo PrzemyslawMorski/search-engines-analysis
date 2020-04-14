@@ -1,3 +1,0 @@
-{
-  "query": { "match_phrase": { "text": "china" } }
-}
