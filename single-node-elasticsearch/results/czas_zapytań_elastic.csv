@@ -1,0 +1,5 @@
+Nr;Query;Time;Memory MB;Memory Percent;CPU [%]
+1;title:market;83;;;
+2;title:market OR text:market OR url:market;65;;;
+3;market;79;;;
+4;Which is the largest market in the world?;325;;;
