@@ -1,0 +1,16 @@
+{
+  "_source": ["uuid"],
+  "size": 1000,
+  "query": {
+    "multi_match": {
+      "query": "market",
+      "type": "best_fields",
+      "fields": ["title", "text", "url"]
+    }
+  },
+  "sort": [{
+    "_score": {
+      "order": "desc"
+    }
+  }]
+}
