@@ -27,13 +27,13 @@ services:
   #   networks:
   #     - local
 
-  datafiller:
-    image: curlimages/curl:7.69.1
-    volumes:
-      - ../scripts/:/app/
-    command: /app/insert_bulk.sh
-    networks:
-      - local
+  # datafiller:
+  #   image: curlimages/curl:7.69.1
+  #   volumes:
+  #     - ../scripts/:/app/
+  #   command: /app/insert_bulk.sh
+  #   networks:
+  #     - local
 
 networks:
   local:
