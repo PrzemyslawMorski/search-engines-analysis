@@ -1,0 +1,475 @@
+13:15:50
+ CPU %               MEM USAGE / LIMIT    MEM %
+57.28%              257.7MiB / 31.4GiB   0.80%
+
+13:15:53
+ CPU %               MEM USAGE / LIMIT    MEM %
+85.28%              271.7MiB / 31.4GiB   0.84%
+
+13:15:56
+ CPU %               MEM USAGE / LIMIT    MEM %
+101.30%             271.7MiB / 31.4GiB   0.84%
+
+13:15:59
+ CPU %               MEM USAGE / LIMIT    MEM %
+99.07%              273.7MiB / 31.4GiB   0.85%
+
+13:16:03
+ CPU %               MEM USAGE / LIMIT    MEM %
+63.73%              315.9MiB / 31.4GiB   0.98%
+
+13:16:07
+ CPU %               MEM USAGE / LIMIT    MEM %
+68.04%              333.9MiB / 31.4GiB   1.04%
+
+13:16:11
+ CPU %               MEM USAGE / LIMIT    MEM %
+75.03%              377.9MiB / 31.4GiB   1.18%
+
+13:16:14
+ CPU %               MEM USAGE / LIMIT    MEM %
+56.80%              449.2MiB / 31.4GiB   1.40%
+
+13:16:18
+ CPU %               MEM USAGE / LIMIT   MEM %
+60.26%              474MiB / 31.4GiB    1.47%
+
+13:16:22
+ CPU %               MEM USAGE / LIMIT   MEM %
+50.13%              586MiB / 31.4GiB    1.82%
+
+13:16:26
+ CPU %               MEM USAGE / LIMIT   MEM %
+89.51%              610MiB / 31.4GiB    1.90%
+
+13:16:29
+ CPU %               MEM USAGE / LIMIT   MEM %
+84.03%              638MiB / 31.4GiB    1.98%
+
+13:16:35
+ CPU %               MEM USAGE / LIMIT    MEM %
+29.89%              719.4MiB / 31.4GiB   2.24%
+
+13:16:42
+ CPU %               MEM USAGE / LIMIT    MEM %
+63.10%              1.099GiB / 31.4GiB   3.50%
+
+13:16:45
+ CPU %               MEM USAGE / LIMIT    MEM %
+157.48%             1.132GiB / 31.4GiB   3.61%
+
+13:16:48
+ CPU %               MEM USAGE / LIMIT    MEM %
+327.82%             1.192GiB / 31.4GiB   3.80%
+
+13:16:51
+ CPU %               MEM USAGE / LIMIT   MEM %
+364.57%             1.21GiB / 31.4GiB   3.85%
+
+13:16:54
+ CPU %               MEM USAGE / LIMIT    MEM %
+265.91%             1.229GiB / 31.4GiB   3.91%
+
+13:16:57
+ CPU %               MEM USAGE / LIMIT    MEM %
+282.11%             1.266GiB / 31.4GiB   4.03%
+
+13:17:00
+ CPU %               MEM USAGE / LIMIT    MEM %
+210.21%             1.296GiB / 31.4GiB   4.13%
+
+13:17:03
+ CPU %               MEM USAGE / LIMIT    MEM %
+50.53%              1.333GiB / 31.4GiB   4.25%
+
+13:17:06
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.46%               1.333GiB / 31.4GiB   4.25%
+
+13:17:09
+ CPU %               MEM USAGE / LIMIT    MEM %
+4.08%               1.315GiB / 31.4GiB   4.19%
+
+13:17:12
+ CPU %               MEM USAGE / LIMIT    MEM %
+185.39%             1.324GiB / 31.4GiB   4.22%
+
+13:17:15
+ CPU %               MEM USAGE / LIMIT    MEM %
+259.77%             1.352GiB / 31.4GiB   4.31%
+
+13:17:18
+ CPU %               MEM USAGE / LIMIT    MEM %
+370.44%             1.353GiB / 31.4GiB   4.31%
+
+13:17:21
+ CPU %               MEM USAGE / LIMIT    MEM %
+306.32%             1.361GiB / 31.4GiB   4.33%
+
+13:17:24
+ CPU %               MEM USAGE / LIMIT    MEM %
+221.00%             1.367GiB / 31.4GiB   4.35%
+
+13:17:27
+ CPU %               MEM USAGE / LIMIT    MEM %
+275.89%             1.371GiB / 31.4GiB   4.37%
+
+13:17:30
+ CPU %               MEM USAGE / LIMIT    MEM %
+180.25%             1.374GiB / 31.4GiB   4.38%
+
+13:17:34
+ CPU %               MEM USAGE / LIMIT    MEM %
+180.11%             1.411GiB / 31.4GiB   4.49%
+
+13:17:37
+ CPU %               MEM USAGE / LIMIT    MEM %
+157.66%             1.462GiB / 31.4GiB   4.66%
+
+13:17:40
+ CPU %               MEM USAGE / LIMIT    MEM %
+144.49%             1.463GiB / 31.4GiB   4.66%
+
+13:17:43
+ CPU %               MEM USAGE / LIMIT   MEM %
+79.47%              1.45GiB / 31.4GiB   4.62%
+
+13:17:46
+ CPU %               MEM USAGE / LIMIT    MEM %
+192.82%             1.457GiB / 31.4GiB   4.64%
+
+13:17:49
+ CPU %               MEM USAGE / LIMIT    MEM %
+179.54%             1.542GiB / 31.4GiB   4.91%
+
+13:17:52
+ CPU %               MEM USAGE / LIMIT    MEM %
+108.56%             1.543GiB / 31.4GiB   4.91%
+
+13:17:55
+ CPU %               MEM USAGE / LIMIT    MEM %
+107.37%             1.544GiB / 31.4GiB   4.92%
+
+13:17:58
+ CPU %               MEM USAGE / LIMIT    MEM %
+141.37%             1.549GiB / 31.4GiB   4.93%
+
+13:18:01
+ CPU %               MEM USAGE / LIMIT   MEM %
+187.31%             1.55GiB / 31.4GiB   4.94%
+
+13:18:04
+ CPU %               MEM USAGE / LIMIT    MEM %
+205.09%             1.671GiB / 31.4GiB   5.32%
+
+13:18:07
+ CPU %               MEM USAGE / LIMIT   MEM %
+62.86%              1.78GiB / 31.4GiB   5.67%
+
+13:18:10
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.75%             1.783GiB / 31.4GiB   5.68%
+
+13:18:13
+ CPU %               MEM USAGE / LIMIT    MEM %
+216.80%             1.946GiB / 31.4GiB   6.20%
+
+13:18:16
+ CPU %               MEM USAGE / LIMIT    MEM %
+121.89%             1.966GiB / 31.4GiB   6.26%
+
+13:18:19
+ CPU %               MEM USAGE / LIMIT    MEM %
+70.91%              1.968GiB / 31.4GiB   6.27%
+
+13:18:22
+ CPU %               MEM USAGE / LIMIT    MEM %
+198.55%             1.969GiB / 31.4GiB   6.27%
+
+13:18:25
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.58%             2.145GiB / 31.4GiB   6.83%
+
+13:18:28
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.73%             2.146GiB / 31.4GiB   6.83%
+
+13:18:31
+ CPU %               MEM USAGE / LIMIT    MEM %
+112.86%             2.155GiB / 31.4GiB   6.86%
+
+13:18:35
+ CPU %               MEM USAGE / LIMIT    MEM %
+172.47%             2.165GiB / 31.4GiB   6.89%
+
+13:18:38
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.44%             2.153GiB / 31.4GiB   6.85%
+
+13:18:41
+ CPU %               MEM USAGE / LIMIT    MEM %
+100.04%             2.258GiB / 31.4GiB   7.19%
+
+13:18:45
+ CPU %               MEM USAGE / LIMIT    MEM %
+98.74%              2.262GiB / 31.4GiB   7.20%
+
+13:18:50
+ CPU %               MEM USAGE / LIMIT    MEM %
+91.72%              2.264GiB / 31.4GiB   7.21%
+
+13:18:54
+ CPU %               MEM USAGE / LIMIT    MEM %
+109.60%             2.266GiB / 31.4GiB   7.21%
+
+13:18:57
+ CPU %               MEM USAGE / LIMIT    MEM %
+39.94%              2.265GiB / 31.4GiB   7.21%
+
+13:19:00
+ CPU %               MEM USAGE / LIMIT    MEM %
+101.50%             2.266GiB / 31.4GiB   7.22%
+
+13:19:03
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.63%             2.266GiB / 31.4GiB   7.22%
+
+13:19:06
+ CPU %               MEM USAGE / LIMIT    MEM %
+113.65%             2.266GiB / 31.4GiB   7.22%
+
+13:19:09
+ CPU %               MEM USAGE / LIMIT    MEM %
+211.31%             2.267GiB / 31.4GiB   7.22%
+
+13:19:13
+ CPU %               MEM USAGE / LIMIT    MEM %
+162.91%             2.268GiB / 31.4GiB   7.22%
+
+13:19:17
+ CPU %               MEM USAGE / LIMIT    MEM %
+130.08%             2.269GiB / 31.4GiB   7.23%
+
+13:19:21
+ CPU %               MEM USAGE / LIMIT   MEM %
+104.75%             2.27GiB / 31.4GiB   7.23%
+
+13:19:24
+ CPU %               MEM USAGE / LIMIT    MEM %
+107.53%             2.273GiB / 31.4GiB   7.24%
+
+13:19:27
+ CPU %               MEM USAGE / LIMIT    MEM %
+102.36%             2.273GiB / 31.4GiB   7.24%
+
+13:19:30
+ CPU %               MEM USAGE / LIMIT    MEM %
+107.25%             2.274GiB / 31.4GiB   7.24%
+
+13:19:33
+ CPU %               MEM USAGE / LIMIT    MEM %
+101.51%             2.274GiB / 31.4GiB   7.24%
+
+13:19:36
+ CPU %               MEM USAGE / LIMIT    MEM %
+111.24%             2.275GiB / 31.4GiB   7.24%
+
+13:19:39
+ CPU %               MEM USAGE / LIMIT    MEM %
+102.30%             2.275GiB / 31.4GiB   7.24%
+
+13:19:42
+ CPU %               MEM USAGE / LIMIT    MEM %
+208.84%             2.275GiB / 31.4GiB   7.24%
+
+13:19:45
+ CPU %               MEM USAGE / LIMIT    MEM %
+97.91%              2.275GiB / 31.4GiB   7.25%
+
+13:19:48
+ CPU %               MEM USAGE / LIMIT    MEM %
+107.26%             2.275GiB / 31.4GiB   7.24%
+
+13:19:52
+ CPU %               MEM USAGE / LIMIT    MEM %
+76.79%              2.275GiB / 31.4GiB   7.24%
+
+13:19:55
+ CPU %               MEM USAGE / LIMIT    MEM %
+101.40%             2.275GiB / 31.4GiB   7.24%
+
+13:19:58
+ CPU %               MEM USAGE / LIMIT    MEM %
+58.81%              2.275GiB / 31.4GiB   7.24%
+
+13:20:01
+ CPU %               MEM USAGE / LIMIT    MEM %
+105.48%             2.275GiB / 31.4GiB   7.24%
+
+13:20:05
+ CPU %               MEM USAGE / LIMIT    MEM %
+101.90%             2.275GiB / 31.4GiB   7.24%
+
+13:20:08
+ CPU %               MEM USAGE / LIMIT    MEM %
+102.01%             2.275GiB / 31.4GiB   7.24%
+
+13:20:11
+ CPU %               MEM USAGE / LIMIT    MEM %
+11.20%              2.275GiB / 31.4GiB   7.24%
+
+13:20:15
+ CPU %               MEM USAGE / LIMIT   MEM %
+184.14%             2.37GiB / 31.4GiB   7.55%
+
+13:20:18
+ CPU %               MEM USAGE / LIMIT    MEM %
+124.92%             2.388GiB / 31.4GiB   7.60%
+
+13:20:21
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.21%             2.388GiB / 31.4GiB   7.60%
+
+13:20:24
+ CPU %               MEM USAGE / LIMIT    MEM %
+104.94%             2.388GiB / 31.4GiB   7.60%
+
+13:20:28
+ CPU %               MEM USAGE / LIMIT    MEM %
+98.89%              2.388GiB / 31.4GiB   7.61%
+
+13:20:31
+ CPU %               MEM USAGE / LIMIT   MEM %
+106.07%             2.39GiB / 31.4GiB   7.61%
+
+13:20:34
+ CPU %               MEM USAGE / LIMIT   MEM %
+105.79%             2.39GiB / 31.4GiB   7.61%
+
+13:20:37
+ CPU %               MEM USAGE / LIMIT   MEM %
+57.59%              2.39GiB / 31.4GiB   7.61%
+
+13:20:40
+ CPU %               MEM USAGE / LIMIT   MEM %
+218.17%             2.39GiB / 31.4GiB   7.61%
+
+13:20:43
+ CPU %               MEM USAGE / LIMIT   MEM %
+111.90%             2.39GiB / 31.4GiB   7.61%
+
+13:20:46
+ CPU %               MEM USAGE / LIMIT   MEM %
+44.27%              2.39GiB / 31.4GiB   7.61%
+
+13:20:49
+ CPU %               MEM USAGE / LIMIT   MEM %
+107.07%             2.39GiB / 31.4GiB   7.61%
+
+13:20:52
+ CPU %               MEM USAGE / LIMIT   MEM %
+103.57%             2.39GiB / 31.4GiB   7.61%
+
+13:20:55
+ CPU %               MEM USAGE / LIMIT   MEM %
+104.42%             2.39GiB / 31.4GiB   7.61%
+
+13:20:58
+ CPU %               MEM USAGE / LIMIT   MEM %
+109.93%             2.39GiB / 31.4GiB   7.61%
+
+13:21:01
+ CPU %               MEM USAGE / LIMIT   MEM %
+208.14%             2.39GiB / 31.4GiB   7.61%
+
+13:21:05
+ CPU %               MEM USAGE / LIMIT   MEM %
+190.75%             2.39GiB / 31.4GiB   7.61%
+
+13:21:09
+ CPU %               MEM USAGE / LIMIT    MEM %
+137.52%             2.391GiB / 31.4GiB   7.62%
+
+13:21:12
+ CPU %               MEM USAGE / LIMIT    MEM %
+114.75%             2.391GiB / 31.4GiB   7.61%
+
+13:21:15
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.12%             2.391GiB / 31.4GiB   7.61%
+
+13:21:18
+ CPU %               MEM USAGE / LIMIT    MEM %
+108.83%             2.391GiB / 31.4GiB   7.61%
+
+13:21:21
+ CPU %               MEM USAGE / LIMIT    MEM %
+102.60%             2.391GiB / 31.4GiB   7.61%
+
+13:21:24
+ CPU %               MEM USAGE / LIMIT    MEM %
+51.22%              2.391GiB / 31.4GiB   7.61%
+
+13:21:27
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.44%             2.391GiB / 31.4GiB   7.61%
+
+13:21:30
+ CPU %               MEM USAGE / LIMIT    MEM %
+103.45%             2.391GiB / 31.4GiB   7.61%
+
+13:21:33
+ CPU %               MEM USAGE / LIMIT    MEM %
+109.08%             2.391GiB / 31.4GiB   7.61%
+
+13:21:36
+ CPU %               MEM USAGE / LIMIT    MEM %
+104.48%             2.391GiB / 31.4GiB   7.61%
+
+13:21:39
+ CPU %               MEM USAGE / LIMIT    MEM %
+105.26%             2.391GiB / 31.4GiB   7.61%
+
+13:21:42
+ CPU %               MEM USAGE / LIMIT    MEM %
+105.51%             2.391GiB / 31.4GiB   7.61%
+
+13:21:46
+ CPU %               MEM USAGE / LIMIT    MEM %
+68.99%              2.391GiB / 31.4GiB   7.61%
+
+13:21:49
+ CPU %               MEM USAGE / LIMIT    MEM %
+114.48%             2.391GiB / 31.4GiB   7.61%
+
+13:21:52
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.33%               2.391GiB / 31.4GiB   7.61%
+
+13:21:55
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.71%               2.391GiB / 31.4GiB   7.61%
+
+13:21:58
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.35%               2.391GiB / 31.4GiB   7.61%
+
+13:22:01
+ CPU %               MEM USAGE / LIMIT    MEM %
+1.44%               2.391GiB / 31.4GiB   7.61%
+
+13:22:04
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.31%               2.391GiB / 31.4GiB   7.61%
+
+13:22:07
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.55%               2.391GiB / 31.4GiB   7.61%
+
+13:22:10
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.57%               2.391GiB / 31.4GiB   7.61%
+
+13:22:13
+ CPU %               MEM USAGE / LIMIT    MEM %
+0.29%               2.391GiB / 31.4GiB   7.61%

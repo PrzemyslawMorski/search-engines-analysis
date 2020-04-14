@@ -1,0 +1,14 @@
+{
+  "_source": ["uuid"],
+  "size": 1000,
+  "query": {
+    "query_string": {
+      "query": "(which) OR (is) OR (the) OR (largest) OR (market) OR (in) OR (the) OR (world)"
+    }
+  },
+  "sort": [{
+    "_score": {
+      "order": "desc"
+    }
+  }]
+}

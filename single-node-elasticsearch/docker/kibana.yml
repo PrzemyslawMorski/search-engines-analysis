@@ -1,0 +1,14 @@
+version: "2.3"
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.6.1
+    environment:
+      - "ELASTICSEARCH_HOSTS=http://ip172-18-0-107-bq9jeuaosm4g00avb1m0-9200.direct.labs.play-with-docker.com/"
+    ports:
+      - "5601:5601"
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
