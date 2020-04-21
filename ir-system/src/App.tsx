@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import ButtonsShowcase from './showcases/Buttons';
 import ToastsShowcase from './showcases/Toasts';
 
-
 const App: React.FC = () => {
   return (
     <Container className="p-3">
