@@ -1,0 +1,14 @@
+version: "2.3"
+services:
+
+  inserter:
+    container_name: news_articles_inserter
+    image: pmorski/news_articles_inserter
+    environment: 
+      - ELASTICSEARCH_URL=news_articles_elasticsearch:9200
+    networks:
+      - ir-system_local
+
+networks:
+  ir-system_local:
+    external: true
