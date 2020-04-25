@@ -25,7 +25,10 @@ export default class SearchService {
         };
 
         if (last) {
-            body.searchAfter = [last._source.uuid];
+            // jesli do sortu zostanie dodane jeszcze inne pole to dla kolejnosc wartosci w search_after musi byc taka jak w sort
+            // liczba pol w sort musi rownac sie liczbie wartosci w search_after
+            // wszystkie te pola mozna wziac z 
+            body.search_after = [last._source.uuid];
         }
 
         const response = await axios.post<SearchResponse<Article>>('http://localhost:9200/news_articles/_search', body);
