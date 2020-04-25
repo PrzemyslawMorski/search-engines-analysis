@@ -3,5 +3,8 @@ node.name: io_test
 discovery.type: single-node
 network.host: 0.0.0.0
 http.port: 9200
-http.cors.enabled: true
-http.cors.allow-origin: "*"
+http.cors:
+  enabled: true
+  allow-origin: /http?:\/\/localhost(:[0-9]+)?/
+  allow-headers: x-requested-with, content-type, content-length, authorization, accept
+  allow-credentials: true
