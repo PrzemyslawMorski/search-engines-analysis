@@ -39,9 +39,9 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
                 pageStart={0}
                 loadMore={this.loadMore}
                 hasMore={this.state.hasMore}
-                loader={<Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>}
+                loader={<Spinner key={0} animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>}
             >
-                {this.state.results.map((item: Article) => <div>{item._source.title}</div>)}
+                {this.state.results.map((item: Article) => <div key={item._source.uuid}>{item._source.title}</div>)}
             </InfiniteScroll>
         );
     }
