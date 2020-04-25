@@ -4,6 +4,7 @@ services:
   inserter:
     container_name: news_articles_inserter
     image: pmorski/news_articles_inserter
+    tty: true
     environment: 
       - ELASTICSEARCH_URL=news_articles_elasticsearch:9200
     networks:

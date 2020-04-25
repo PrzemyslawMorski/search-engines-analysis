@@ -6,13 +6,11 @@ services:
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "discovery.type=single-node"
+    volumes:
+      - elasticdata:/usr/share/elasticsearch/data
+      - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasicsearch.yml
     ports:
       - "9200:9200"
-    healthcheck:
-      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
-      interval: 30s
-      timeout: 30s
-      retries: 3
     networks:
       - local
 
@@ -27,6 +25,9 @@ services:
       - elasticsearch
     networks:
       - local
+
+volumes:
+  elasticdata:
 
 networks:
   local:
