@@ -1,7 +1,7 @@
 import glob
 import json
 
-root_dir = "./"
+root_dir = "/home/vagrant/projects/financial_data/data/"
 
 distinctVals = {}
 
