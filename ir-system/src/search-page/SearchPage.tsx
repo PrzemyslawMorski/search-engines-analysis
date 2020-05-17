@@ -3,39 +3,30 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
 import ResultsComponent from "./results-component/Results";
+import SearchBar from "./SearchBar";
+import { ReplaySubject } from "rxjs";
 
 type SearchPageProps = {
 };
 type SearchPageState = {
     searched: boolean;
-    searchInput: string;
-    currentQuery: string;
 };
 class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
     state: SearchPageState = {
-        searched: false,
-        searchInput: '',
-        currentQuery: ''
+        searched: false
     };
+
+    currentQuery$ = new ReplaySubject<string>(1);
 
     constructor(props: SearchPageProps) {
         super(props);
-
-        this.handleQueryChange = this.handleQueryChange.bind(this);
-        this.onSearchInputKeyUp = this.onSearchInputKeyUp.bind(this);
+        this.searchedCallback = this.searchedCallback.bind(this);
     }
 
-    onSearchInputKeyUp(event: React.KeyboardEvent) {
-        if (event.key === "Enter") {
-            this.setState({ ...this.state, searched: true, currentQuery: this.state.searchInput });
-        }
-
-    }
-    handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ searchInput: event.target.value });
+    searchedCallback(searchPhrase: string) {
+        this.setState({ searched: true });
+        this.currentQuery$.next(searchPhrase);
     }
 
     render() {
@@ -60,23 +51,10 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
                             <h2>Search page</h2>
                         </Row>
                         <Row>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="search-input">Search</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <FormControl
-                                    placeholder="Input your search phrase and press Enter"
-                                    type="input"
-                                    aria-label="Search"
-                                    aria-describedby="search-input"
-                                    value={this.state.searchInput}
-                                    onChange={this.handleQueryChange}
-                                    onKeyUp={this.onSearchInputKeyUp}
-                                />
-                            </InputGroup>
+                            <SearchBar searched={this.searchedCallback} />
                         </Row>
                         {this.state.searched ? <Row>
-                            <ResultsComponent query={this.state.currentQuery} />
+                            <ResultsComponent query$={this.currentQuery$} />
                         </Row> : null}
                     </Col>
 
