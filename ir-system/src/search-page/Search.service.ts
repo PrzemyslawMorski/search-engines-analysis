@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Article } from "../models/Article";
 import { SearchResponse } from '../models/SearchResponse';
+import constants from '../constants';
 
 export default class SearchService {
 
@@ -25,13 +26,13 @@ export default class SearchService {
         };
 
         if (last) {
-            // jesli do sortu zostanie dodane jeszcze inne pole to dla kolejnosc wartosci w search_after musi byc taka jak w sort
-            // liczba pol w sort musi rownac sie liczbie wartosci w search_after
-            // wszystkie te pola mozna wziac z 
+            // if you add another field to sort then you need to add that field's value to search_after
+            // the order of fields in search_after needs to match the order of sort fields
+            // all field values for search_after can be accessed in the `last` object
             body.search_after = [last._source.uuid];
         }
 
-        const response = await axios.post<SearchResponse<Article>>('http://localhost:8200/news_articles/_search', body);
+        const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
         console.log(response.data);
         result = response.data.hits.hits;
 
