@@ -1,10 +1,10 @@
-cluster.name: io_test
-node.name: io_test
+cluster.name: news_articles_cluster
+node.name: news_articles_master
 discovery.type: single-node
 network.host: 0.0.0.0
 http.port: 9200
-http.cors:
-  enabled: true
-  allow-origin: /http?:\/\/localhost(:[0-9]+)?/
-  allow-headers: x-requested-with, content-type, content-length, authorization, accept
-  allow-credentials: true
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-credentials: true

@@ -31,7 +31,7 @@ export default class SearchService {
             body.search_after = [last._source.uuid];
         }
 
-        const response = await axios.post<SearchResponse<Article>>('http://localhost:9200/news_articles/_search', body);
+        const response = await axios.post<SearchResponse<Article>>('http://localhost:8200/news_articles/_search', body);
         console.log(response.data);
         result = response.data.hits.hits;
 

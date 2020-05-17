@@ -1,18 +1,16 @@
-version: "2.3"
+version: "3.7"
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    build:
+      context: ./elasticsearch
+      dockerfile: Dockerfile_elasticsearch
     container_name: news_articles_elasticsearch
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "discovery.type=single-node"
+      ES_JAVA_OPTS: "-Xms256m -Xmx256m"
     volumes:
-      - elasticdata:/usr/share/elasticsearch/data
-      - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasicsearch.yml
-    ports:
-      - "9200:9200"
+      - elastic_data:/usr/share/elasticsearch/data
     networks:
-      - local
+      - elastic_net
 
   kibana:
     container_name: news_articles_kibana
@@ -24,11 +22,19 @@ services:
     depends_on:
       - elasticsearch
     networks:
-      - local
+      - elastic_net
+
+  nginx:
+    image: nginx
+    ports:
+      - 8200:80
+    networks:
+      - elastic_net
+    volumes:
+      - ./elasticsearch/nginx.conf:/etc/nginx/nginx.conf:ro
 
 volumes:
-  elasticdata:
+  elastic_data:
 
 networks:
-  local:
-    driver: bridge
+  elastic_net:
