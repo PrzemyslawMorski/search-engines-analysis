@@ -4,33 +4,51 @@ import Spinner from 'react-bootstrap/Spinner';
 import SearchService from "../Search.service";
 import { Article } from "../../models/Article";
 import _ from "lodash";
+import { Observable, Subscription, from, Subject } from "rxjs";
+import { mergeMap, withLatestFrom } from "rxjs/operators";
 
 type ResultsComponentProps = {
-    query: string
+    query$: Observable<string>
 };
 type ResultsComponentState = {
     results: Article[];
     hasMore: boolean;
 };
+
 class ResultsComponent extends React.Component<ResultsComponentProps, ResultsComponentState> {
     state: ResultsComponentState = {
         results: [],
         hasMore: true
     };
 
+    subscriptions: Subscription[] = [];
     searchService: SearchService = new SearchService();
+    loadMoreEvent = new Subject();
 
-    loadMore = async () => {
-        if (!this.state.hasMore) {
-            return;
-        }
+    componentWillUnmount() {
+        this.subscriptions.forEach(s => s.unsubscribe());
+    }
 
-        const articles = await this.searchService.loadArticles(this.props.query, _.last(this.state.results))
-        if (!articles || articles.length === 0) {
-            this.setState({ ...this.state, hasMore: false });
-        } else {
-            this.setState({ ...this.state, results: _.concat(this.state.results, ...articles) });
-        }
+    componentWillMount() {
+        this.subscriptions.push(this.props.query$.subscribe(() => this.setState({ ...this.state, hasMore: true })));
+
+        // 
+        this.subscriptions.push(this.loadMoreEvent.pipe(
+            withLatestFrom(this.props.query$),
+            mergeMap(([, lastSearchPhrase]) => {
+                return from(this.searchService.loadArticles(lastSearchPhrase, _.last(this.state.results)));
+            }))
+            .subscribe(articles => {
+                if (!articles || articles.length === 0) {
+                    this.setState({ ...this.state, hasMore: false });
+                } else {
+                    this.setState({ ...this.state, results: _.concat(this.state.results, ...articles) });
+                }
+            }));
+    }
+
+    loadMore = () => {
+        this.loadMoreEvent.next();
     }
 
     render() {
