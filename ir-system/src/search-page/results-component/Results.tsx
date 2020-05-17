@@ -29,15 +29,13 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
-    componentWillMount() {
-        this.subscriptions.push(this.props.query$.subscribe(() => this.setState({ ...this.state, hasMore: true })));
+    componentDidMount() {
+        this.subscriptions.push(this.props.query$.subscribe(() => this.setState({ ...this.state, results: [], hasMore: true })));
 
-        // 
         this.subscriptions.push(this.loadMoreEvent.pipe(
             withLatestFrom(this.props.query$),
-            mergeMap(([, lastSearchPhrase]) => {
-                return from(this.searchService.loadArticles(lastSearchPhrase, _.last(this.state.results)));
-            }))
+            mergeMap(([, lastSearchPhrase]) => from(this.searchService.loadArticles(lastSearchPhrase, _.last(this.state.results))))
+        )
             .subscribe(articles => {
                 if (!articles || articles.length === 0) {
                     this.setState({ ...this.state, hasMore: false });
