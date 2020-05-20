@@ -5,31 +5,33 @@ import constants from '../constants';
 
 export default class SearchService {
 
-    private processQuery(query: string) {
-        return {
-            query: {
-                match: {
-                    title: query
-                }
-            }
-        }
-    }
-
     async loadArticles(query: string, last?: Article): Promise<Article[]> {
         let result: Article[] = [];
         const body: any = {
             size: 10,
             sort: [
+                "_score",
                 { "uuid.keyword": "asc" }
             ],
-            ...this.processQuery(query)
+            "query": {
+                "multi_match": {
+                    "query": query,
+                    "fields": [
+                        "title",
+                        "text",
+                        "entities.locations.name",
+                        "entities.organizations.name",
+                        "entities.persons.name"
+                    ]
+                }
+            }
         };
 
         if (last) {
             // if you add another field to sort then you need to add that field's value to search_after
             // the order of fields in search_after needs to match the order of sort fields
             // all field values for search_after can be accessed in the `last` object
-            body.search_after = [last._source.uuid];
+            body.search_after = [last._score, last._source.uuid];
         }
 
         const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
