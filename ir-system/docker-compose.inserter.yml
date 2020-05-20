@@ -1,11 +1,10 @@
-version: "2.3"
+version: "3.7"
 services:
-
   inserter:
     container_name: news_articles_inserter
     image: pmorski/news_articles_inserter
     tty: true
-    environment: 
+    environment:
       - ELASTICSEARCH_URL=news_articles_elasticsearch:9200
     networks:
       - ir-system_elastic_net
