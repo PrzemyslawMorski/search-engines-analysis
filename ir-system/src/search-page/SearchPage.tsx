@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import ResultsComponent from "./results-component/Results";
 import SearchBar from "./SearchBar";
 import { ReplaySubject } from "rxjs";
+import { Link } from "react-router-dom";
 
 type SearchPageProps = {
 };
@@ -36,6 +37,7 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
                     this.state.searched ? null : <Row>
                         <Col>
                             <Jumbotron>
+                                <Link to="/map">Map</Link>
                                 <h1>Hello!</h1>
                                 <p>
                                     <span>This web page is used to search through a set of business-related news articles which are part of </span>

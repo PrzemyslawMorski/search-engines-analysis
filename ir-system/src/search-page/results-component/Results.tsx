@@ -1,11 +1,11 @@
 import React from "react";
 import InfiniteScroll from 'react-infinite-scroller';
-import Spinner from 'react-bootstrap/Spinner';
 import SearchService from "../Search.service";
 import { Article } from "../../models/Article";
 import _ from "lodash";
 import { Observable, Subscription, from, Subject } from "rxjs";
 import { mergeMap, withLatestFrom } from "rxjs/operators";
+import loader from "../../loader.gif";
 
 type ResultsComponentProps = {
     query$: Observable<string>
@@ -55,7 +55,7 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
                 pageStart={0}
                 loadMore={this.loadMore}
                 hasMore={this.state.hasMore}
-                loader={<Spinner key={0} animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>}
+                loader={<img src={loader} className="loader" alt="Loading..." />}
             >
                 {this.state.results.map((item: Article) => <div key={item._source.uuid}>{item._source.title}</div>)}
             </InfiniteScroll>
