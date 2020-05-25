@@ -1,11 +1,13 @@
 import React from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import SearchService from "../Search.service";
-import { Article } from "../../models/Article";
+import {Article} from "../../models/Article";
 import _ from "lodash";
-import { Observable, Subscription, from, Subject } from "rxjs";
-import { mergeMap, withLatestFrom } from "rxjs/operators";
+import {from, Observable, Subject, Subscription} from "rxjs";
+import {mergeMap, withLatestFrom} from "rxjs/operators";
 import loader from "../../loader.gif";
+import ResultItem from "./ResultItem"
+import {Col, Container, Row} from "react-bootstrap";
 
 type ResultsComponentProps = {
     query$: Observable<string>
@@ -30,7 +32,11 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
     }
 
     componentDidMount() {
-        this.subscriptions.push(this.props.query$.subscribe(() => this.setState({ ...this.state, results: [], hasMore: true })));
+        this.subscriptions.push(this.props.query$.subscribe(() => this.setState({
+            ...this.state,
+            results: [],
+            hasMore: true
+        })));
 
         this.subscriptions.push(this.loadMoreEvent.pipe(
             withLatestFrom(this.props.query$),
@@ -38,9 +44,9 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
         )
             .subscribe(articles => {
                 if (!articles || articles.length === 0) {
-                    this.setState({ ...this.state, hasMore: false });
+                    this.setState({...this.state, hasMore: false});
                 } else {
-                    this.setState({ ...this.state, results: _.concat(this.state.results, ...articles) });
+                    this.setState({...this.state, results: _.concat(this.state.results, ...articles)});
                 }
             }));
     }
@@ -51,14 +57,27 @@ class ResultsComponent extends React.Component<ResultsComponentProps, ResultsCom
 
     render() {
         return (
-            <InfiniteScroll
-                pageStart={0}
-                loadMore={this.loadMore}
-                hasMore={this.state.hasMore}
-                loader={<img src={loader} className="loader" alt="Loading..." />}
-            >
-                {this.state.results.map((item: Article) => <div key={item._source.uuid}>{item._source.title}</div>)}
-            </InfiniteScroll>
+            <Container>
+                <Row>
+                    <Col sm={10}>
+                        <InfiniteScroll
+                            pageStart={0}
+                            loadMore={this.loadMore}
+                            hasMore={this.state.hasMore}
+                            loader={<img src={loader} className="loader" alt="Loading..."/>}>
+
+                            {this.state.results.map((item, index) =>
+                                <ResultItem key={index} article={item}/>)
+                            }
+
+                        </InfiniteScroll>
+                    </Col>
+                    <Col sm={2}>
+                        mentions map
+                    </Col>
+                </Row>
+            </Container>
+
         );
     }
 }
