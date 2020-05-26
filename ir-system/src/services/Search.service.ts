@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Article } from "../models/Article";
 import { SearchResponse } from '../models/SearchResponse';
-import constants from '../constants';
+import constants from '../config/constants';
 
 export default class SearchService {
 

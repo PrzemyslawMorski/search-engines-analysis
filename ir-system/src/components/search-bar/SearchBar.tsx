@@ -3,6 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 
 type SearchBarProps = {
+    initialSearchInput?: string
     searched: (searchPhrase: string) => void
 };
 type SearchBarState = {
@@ -10,7 +11,7 @@ type SearchBarState = {
 };
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     state: SearchBarState = {
-        searchInput: ''
+        searchInput: !!this.props.initialSearchInput ? this.props.initialSearchInput : ''
     };
 
     constructor(props: SearchBarProps) {

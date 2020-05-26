@@ -1,25 +1,19 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import SearchPage from './search-page/SearchPage';
-import MapComponent from './map-component/MapComponent.js';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import MapComponent from "./components/map-component/MapComponent";
+import MainPage from "./pages/main-page/MainPage";
+import ResultsPage from "./pages/results-page/ResultsPage";
 
-const App: React.FC = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/map">
-          <MapComponent />
-        </Route>
-        <Route path="/">
-          <SearchPage />
-        </Route>
-      </Switch>
-    </Router>
-  );
+const App = () => {
+    return (
+        <Router>
+            <Switch>
+                <Route path="/search" component={ResultsPage}/>
+                <Route path="/map" component={MapComponent}/>
+                <Route path="/" component={MainPage}/>
+            </Switch>
+        </Router>
+    );
 };
 
 export default App;
