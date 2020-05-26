@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MapComponent from "./components/map-component/MapComponent";
+import MapPage from "./pages/map-page/MapPage";
 import MainPage from "./pages/main-page/MainPage";
 import ResultsPage from "./pages/results-page/ResultsPage";
 import ArticlePage from './pages/article-page/ArticlePage';
@@ -17,7 +17,7 @@ const App = () => {
                 <Route path="/location/:id" component={LocationPage} />
                 <Route path="/organisation/:id" component={OrganisationPage} />
                 <Route path="/person/:id" component={PersonPage} />
-                <Route path="/map" component={MapComponent} />
+                <Route path="/map" component={MapPage} />
                 <Route path="/" exact={true} component={MainPage} />
             </Switch>
         </Router>

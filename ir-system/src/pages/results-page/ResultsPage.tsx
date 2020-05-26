@@ -12,7 +12,7 @@ import SearchBar from "../../components/search-bar/SearchBar";
 import FiltersBar, {Filters} from "./components/FiltersBar";
 import logo from '../../assets/logo.png';
 import { Link } from "react-router-dom";
-
+import MapComponent from "../../components/map-component/MapComponent";
 
 const ResultsPage = () => {
 
@@ -81,8 +81,13 @@ const ResultsPage = () => {
 
                     </InfiniteScroll>
                 </Col>
-                <Col sm={2}>
-                    mentions map
+                <Col sm={2} className="mentions-map-miniature-section">
+                    Mentions Map
+                    <Link to={'/map'}>
+                        <div className="mentions-map-miniature-container">
+                            <MapComponent miniature />
+                        </div>
+                    </Link>
                 </Col>
             </Row>
         </Container>

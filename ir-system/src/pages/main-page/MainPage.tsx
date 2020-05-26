@@ -21,7 +21,6 @@ const MainPage = () => {
             <Row>
                 <Col>
                     <Jumbotron>
-                        <Link to="/map">Map</Link>
                         <h1>Hello!</h1>
                         <p>
                             <span>This web page is used to search through a set of business-related news articles which are part of </span>
