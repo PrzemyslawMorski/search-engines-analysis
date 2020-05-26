@@ -19,14 +19,7 @@ export enum FilterFields {
 
 const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
-    const initialFilters: Filters = {
-        locations: undefined,
-        authors: undefined,
-        people: undefined,
-        organisations: undefined,
-        dateFrom: undefined,
-        dateTo: undefined,
-    };
+    const initialFilters: Filters = {};
 
     const initialAvailableFilters: ListBasedFilters = {
         locations: [],
@@ -72,10 +65,13 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
         const searchService = new SearchService();
         searchService.aggregateByQuery(query, FilterFields.Locations).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, locations: filters })));
+
         searchService.aggregateByQuery(query, FilterFields.Authors).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, authors: filters })));
+
         searchService.aggregateByQuery(query, FilterFields.Organisations).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, organisations: filters })));
+            
         searchService.aggregateByQuery(query, FilterFields.People).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, people: filters })));
     }, [query]);
@@ -120,12 +116,12 @@ export type Filter = Readonly<{
 }>
 
 export type Filters = Readonly<{
-    locations: Filter[] | undefined,
-    organisations: Filter[] | undefined,
-    people: Filter[] | undefined,
-    authors: Filter[] | undefined,
-    dateFrom: Date | undefined,
-    dateTo: Date | undefined,
+    locations?: Filter[],
+    organisations?: Filter[],
+    people?: Filter[],
+    authors?: Filter[],
+    dateFrom?: Date,
+    dateTo?: Date
 }>
 
 export type ListBasedFilters = Readonly<{
