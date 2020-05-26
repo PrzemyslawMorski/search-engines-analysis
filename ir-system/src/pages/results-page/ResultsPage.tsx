@@ -47,8 +47,8 @@ const ResultsPage = () => {
     }
 
     function onFiltersChange(filters: Filters) {
-        console.log("Filters changed!")
-        console.log(filters)
+        // console.log("Filters changed!")
+        // console.log(filters)
     }
 
     return (
