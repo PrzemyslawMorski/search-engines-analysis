@@ -9,7 +9,6 @@ import { Article } from "../../models/Article";
 import loaderGif from '../../assets/loader.gif'
 import ResultItem from "../results-page/ResultItem";
 import _ from "lodash";
-
 const PersonPage = (props: any) => {
 
     const history = useHistory();
@@ -33,8 +32,8 @@ const PersonPage = (props: any) => {
           ],
         }
     };
-
-    if(props.match.params.nonAuthor){
+    console.log("props search", props.location.search)
+    if(props.location.search){
             queryBuilder = {
                 "term": {
                 "entities.persons.name.keyword": {
@@ -108,10 +107,10 @@ const PersonPage = (props: any) => {
                             }
                         </InfiniteScroll>
                     </Col>
-                    <Col xs={3}>
+                    {/* <Col xs={3}>
                         <h3>Info</h3>
                         <h3>Related</h3>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
     )

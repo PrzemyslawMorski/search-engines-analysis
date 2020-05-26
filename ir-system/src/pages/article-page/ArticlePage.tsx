@@ -22,7 +22,8 @@ const ArticlePage = (props: any) => {
         author: "",
         organizations: [""],
         people: [""],
-        locations: ""
+        locations: "",
+        url: ""
     });
     const searchService: SearchService = new SearchService();
     const queryBuilder = { 
@@ -47,7 +48,8 @@ const ArticlePage = (props: any) => {
                     author: article.author,
                     organizations: article.entities.organizations.map(e=>e.name),
                     people: article.entities.persons.map(e=>e.name),
-                    locations: article.locations.join(", ")}
+                    locations: article.locations.join(", "),
+                    url: article.url}
                 )
             }
         });
@@ -77,17 +79,21 @@ const ArticlePage = (props: any) => {
                     </Col>
                     <Col xs={3}>
                         <h3>Info</h3>
+                            <h6><a href={articleData.url}>URL</a></h6>
                             <h4>Date</h4>
                             {articleData.published}
-                            <h4>Author</h4>
-                            <Link to={'/person/'+articleData.author.replace(" ", "-")}>{articleData.author}</Link>
-                            <h4>Organisations</h4>
-                            {articleData.organizations.map(organization =><h6><Link to={'/organisation/' + organization.replace(" ","-")}>{organization}</Link></h6>)}
-                        <h3>Related</h3>
-                            <h4>People</h4>
-                            {articleData.people.map(peopl =><h6><Link to={'/person/' + peopl.replace(" ","-")+"/nonAuthor"}>{peopl}</Link></h6>)}
-                            <h4>Locations</h4>
-                            {articleData.locations}
+                            {articleData.author && <span><h4>Author</h4>
+                            <Link to={'/person/'+articleData.author.replace(" ", "-")}>{articleData.author}</Link></span>}
+                            
+                            {articleData.organizations.length >0 && <span><h4>Organizations</h4>
+                            {articleData.organizations.map(organization =><h6><Link to={'/organisation/' + organization.replace(" ","-")}>{organization}</Link></h6>)}</span>}
+                        
+                        {articleData.people.length>0 || articleData.locations && <h3>Related</h3>}
+                            {articleData.people.length>0 && <span><h4>People</h4>
+                            {articleData.people.map(peopl =><h6><Link to={'/person/' + peopl.replace(" ","-")+"/?nonAuthor=true"}>{peopl}</Link></h6>)}</span>}
+                            
+                            {articleData.locations && <span><h4>Locations</h4>
+                            {articleData.locations}</span>}
                     </Col>
                 </Row>
             </Container>

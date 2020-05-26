@@ -16,9 +16,9 @@ const MainPage = () => {
     }
 
     return (
-        <Container>
+        <Container style={{height: "100%"}}>
 
-            <Row>
+            {/* <Row>
                 <Col>
                     <Jumbotron>
                         <h1>Hello!</h1>
@@ -28,9 +28,9 @@ const MainPage = () => {
                         </p>
                     </Jumbotron>
                 </Col>
-            </Row>
-
-            <Row className={"d-flex justify-content-center"}>
+            </Row> */}
+            <div style={{margin: "20% auto"}}>
+            <Row className={"d-flex justify-content-center"} >
                 <img src={logo} alt="logo" />
             </Row>
 
@@ -42,6 +42,7 @@ const MainPage = () => {
                 </Col>
 
             </Row>
+            </div>
         </Container>
     );
 
