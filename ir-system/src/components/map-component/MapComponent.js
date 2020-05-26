@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import constants from '../constants';
+import constants from '../../config/constants';
 import dataStructure from "./data_structure.js";
 import countriesMapping from "./countries_mapping.js";
 import { ResponsiveChoropleth } from "@nivo/geo";
