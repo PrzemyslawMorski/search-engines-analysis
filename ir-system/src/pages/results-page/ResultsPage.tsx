@@ -12,7 +12,7 @@ import SearchBar from "../../components/search-bar/SearchBar";
 import FiltersBar, {Filters} from "./components/FiltersBar";
 import logo from '../../assets/logo.png';
 import { Link } from "react-router-dom";
-
+import MapComponent from "../../components/map-component/MapComponent";
 
 const ResultsPage = () => {
 
@@ -82,7 +82,12 @@ const ResultsPage = () => {
                     </InfiniteScroll>
                 </Col>
                 <Col sm={2}>
-                    mentions map
+                    Mentions Map
+                    <Link to={'/map'}>
+                        <div style={{ height: "100px" }}>
+                            <MapComponent />
+                        </div>
+                    </Link>
                 </Col>
             </Row>
         </Container>
