@@ -7,31 +7,29 @@ import { Filter, Filters, FilterFields } from '../pages/results-page/components/
 export default class SearchService {
 
     private setFilters(body: any, filters?: Filters) {
-        if (filters) {
-            const elasticsearchFilters: any[] = [];
-            if (filters?.authors && filters.authors.length > 0) {
-                elasticsearchFilters.push({ "terms": { [FilterFields.Authors]: filters.authors.map(x => x.value) } });
-            }
-            if (filters?.organisations && filters.organisations.length > 0) {
-                elasticsearchFilters.push({ "terms": { [FilterFields.Organisations]: filters.organisations.map(x => x.value) } });
-            }
-            if (filters?.people && filters.people.length > 0) {
-                elasticsearchFilters.push({ "terms": { [FilterFields.People]: filters.people.map(x => x.value) } });
-            }
-            if (filters?.locations && filters.locations.length > 0) {
-                elasticsearchFilters.push({ "terms": { [FilterFields.Locations]: filters.locations.map(x => x.value) } });
-            }
-            if (filters?.dateFrom) {
-                elasticsearchFilters.push({ "terms": { [FilterFields.PublishDate]: filters.dateFrom } });
-            }
-            if (filters?.dateTo) {
-                elasticsearchFilters.push({ "range": { [FilterFields.PublishDate]: filters.dateTo } });
-            }
+        const elasticsearchFilters: any[] = [];
+        if (filters?.authors && filters.authors.length > 0) {
+            elasticsearchFilters.push({ "terms": { [FilterFields.Authors]: filters.authors.map(x => x.value) } });
+        }
+        if (filters?.organisations && filters.organisations.length > 0) {
+            elasticsearchFilters.push({ "terms": { [FilterFields.Organisations]: filters.organisations.map(x => x.value) } });
+        }
+        if (filters?.people && filters.people.length > 0) {
+            elasticsearchFilters.push({ "terms": { [FilterFields.People]: filters.people.map(x => x.value) } });
+        }
+        if (filters?.locations && filters.locations.length > 0) {
+            elasticsearchFilters.push({ "terms": { [FilterFields.Locations]: filters.locations.map(x => x.value) } });
+        }
+        if (filters?.dateFrom) {
+            elasticsearchFilters.push({ "range": { [FilterFields.PublishDate]: { "gte": filters.dateFrom } } });
+        }
+        if (filters?.dateTo) {
+            elasticsearchFilters.push({ "range": { [FilterFields.PublishDate]: { "lte": filters.dateTo } } });
+        }
 
-            if (elasticsearchFilters.length > 0) {
-                body.bool = {
-                    "filter": elasticsearchFilters
-                }
+        if (elasticsearchFilters.length > 0) {
+            body.bool = {
+                "filter": elasticsearchFilters
             }
         }
     }
