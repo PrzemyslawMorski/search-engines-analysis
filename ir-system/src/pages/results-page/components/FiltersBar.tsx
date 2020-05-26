@@ -13,16 +13,30 @@ export enum FilterFields {
     Locations = "entities.locations.name.keyword",
     People = "entities.persons.name.keyword",
     Authors = "author.keyword",
-    Organisations = "entities.organizations.name.keyword"
+    Organisations = "entities.organizations.name.keyword",
+    PublishDate = "published"
 }
 
 const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
-    const initialFilters: Filters = { locations: undefined, authors: undefined, people: undefined, organisations: undefined, dateFrom: undefined, dateTo: undefined }
-    const initialAvailableFilters: Filters = { locations: [], authors: [], organisations: [], people: [] };
+    const initialFilters: Filters = {
+        locations: undefined,
+        authors: undefined,
+        people: undefined,
+        organisations: undefined,
+        dateFrom: undefined,
+        dateTo: undefined,
+    };
+
+    const initialAvailableFilters: ListBasedFilters = {
+        locations: [],
+        authors: [],
+        people: [],
+        organisations: []
+    };
 
     const [filters, setFilters] = useState<Filters>(initialFilters)
-    const [availableFilters, setAvailableFilters] = useState<Filters>(initialAvailableFilters)
+    const [availableFilters, setAvailableFilters] = useState<ListBasedFilters>(initialAvailableFilters)
 
     const onLocationsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, locations: (value as Filter[]) }))
@@ -106,12 +120,19 @@ export type Filter = Readonly<{
 }>
 
 export type Filters = Readonly<{
-    locations?: Filter[],
-    organisations?: Filter[],
-    people?: Filter[],
-    authors?: Filter[],
-    dateFrom?: Date,
-    dateTo?: Date
+    locations: Filter[] | undefined,
+    organisations: Filter[] | undefined,
+    people: Filter[] | undefined,
+    authors: Filter[] | undefined,
+    dateFrom: Date | undefined,
+    dateTo: Date | undefined,
+}>
+
+export type ListBasedFilters = Readonly<{
+    locations: Filter[],
+    organisations: Filter[],
+    people: Filter[],
+    authors: Filter[]
 }>
 
 export default FiltersBar
