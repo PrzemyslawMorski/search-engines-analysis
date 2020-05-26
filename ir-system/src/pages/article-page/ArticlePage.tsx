@@ -20,8 +20,8 @@ const ArticlePage = (props: any) => {
         title: "",
         published: "",
         author: "",
-        organizations: "",
-        people: "",
+        organizations: [""],
+        people: [""],
         locations: ""
     });
     const searchService: SearchService = new SearchService();
@@ -45,8 +45,8 @@ const ArticlePage = (props: any) => {
                     title:article.title,
                     published:new Date(article.published).toLocaleDateString(),
                     author: article.author,
-                    organizations: article.organizations.join(", "),
-                    people: article.persons.join(", "),
+                    organizations: article.entities.organizations.map(e=>e.name),
+                    people: article.entities.persons.map(e=>e.name),
                     locations: article.locations.join(", ")}
                 )
             }
@@ -82,10 +82,10 @@ const ArticlePage = (props: any) => {
                             <h4>Author</h4>
                             <Link to={'/person/'+articleData.author.replace(" ", "-")}>{articleData.author}</Link>
                             <h4>Organisations</h4>
-                            {articleData.organizations}
+                            {articleData.organizations.map(organization =><h6><Link to={'/organisation/' + organization.replace(" ","-")}>{organization}</Link></h6>)}
                         <h3>Related</h3>
                             <h4>People</h4>
-                            {articleData.people}
+                            {articleData.people.map(peopl =><h6><Link to={'/person/' + peopl.replace(" ","-")}>{peopl}</Link></h6>)}
                             <h4>Locations</h4>
                             {articleData.locations}
                     </Col>

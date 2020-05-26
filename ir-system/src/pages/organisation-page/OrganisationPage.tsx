@@ -26,15 +26,14 @@ const OrganisationPage = (props: any) => {
 
     const searchService: SearchService = new SearchService();
 
-    const queryBuilder = { 
-        "bool": { 
-          "must": [
-            { "match": { "organization": props.match.params.name}}
-          ],
+    const queryBuilder = {
+        "term": {
+          "entities.organizations.name.keyword": {
+            "value": props.match.params.name.replace("-", " ")
+          }
         }
-    };
+      }
 
-    const sortBuilder = {"published":"asc"}
     searchService.getCount({query: queryBuilder})
                 .then(count => {
                     console.log("setting count as: ", count);
@@ -77,7 +76,7 @@ const OrganisationPage = (props: any) => {
                 </Row>
                 <Row className="detail-header d-flex align-items-center" >
                     <Col xs={8}>
-                        <h2>{props.match.params.name}</h2>
+                        <h2>{props.match.params.name.replace("-", " ")}</h2>
                         <div style={{marginTop: "30px"}}>
                             <div className="header-info">No. Articles:</div> {count}
                             <div className="header-info">First article date:</div> {activeFrom}

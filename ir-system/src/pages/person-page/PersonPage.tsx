@@ -34,7 +34,6 @@ const PersonPage = (props: any) => {
         }
     };
 
-    const sortBuilder = {"published":"asc"}
     searchService.getCount({query: queryBuilder})
                 .then(count => {
                     console.log("setting count as: ", count);
