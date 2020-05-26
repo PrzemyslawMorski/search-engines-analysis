@@ -11,6 +11,7 @@ import _ from "lodash";
 import SearchBar from "../../components/search-bar/SearchBar";
 import FiltersBar, {Filters} from "./components/FiltersBar";
 
+
 const ResultsPage = () => {
 
     const history = useHistory();
@@ -61,6 +62,7 @@ const ResultsPage = () => {
                 </Col>
             </Row>
             <Row className={"mt-2 justify-content-sm-center"}>
+
                 <Col sm={10}>
                     <InfiniteScroll
                         pageStart={0}
