@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
 import constants from '../../config/constants';
-import dataStructure from "./data_structure.js";
-import countriesMapping from "./countries_mapping.js";
 import { ResponsiveChoropleth } from "@nivo/geo";
-import countries from "./world_countries.json";
+import features from "./features.json";
+import countries from "./countries.json";
 
 class MapComponent extends React.Component {
 
@@ -19,17 +18,11 @@ class MapComponent extends React.Component {
 
 
   componentDidMount() {
-    dataStructure.forEach(datum => {
-      let name;
-      countriesMapping.forEach(mapping => {
-        if (mapping.alpha3 === datum.id) {
-          name = mapping.name;
-        }
-      })
+    countries.forEach(country => {
       const body = {
         "query": {
             "multi_match": {
-                "query": name,
+                "query": country.name,
                 "fields": [
                     "title",
                     "text",
@@ -45,7 +38,7 @@ class MapComponent extends React.Component {
           data: [
             ...this.state.data,
             {
-              id: datum.id,
+              id: country.id,
               value: res.data.count,
             }
           ],
@@ -59,7 +52,7 @@ class MapComponent extends React.Component {
     return (
         <ResponsiveChoropleth
           data={this.state.data}
-          features={countries.features}
+          features={features.features}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           colors="nivo"
           domain={[ 0, this.state.max ]}
