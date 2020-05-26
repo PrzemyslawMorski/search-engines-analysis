@@ -20,7 +20,7 @@ const ResultItem = ({ article }: ResultItemProps) => {
                 <Col>{article._source.text.slice(0, count) + (article._source.text.length > count ? "..." : "")}</Col>
             </Row>
             <Row>
-                <Col className={"col-sm-auto"}>Author: {article._source.author}</Col>
+            <Col className={"col-sm-auto"}>Author: <Link to={'person/'+article._source.author.replace(" ", "-")}>{article._source.author}</Link></Col>
                 <Col className={"col-sm-auto"}>Date: {new Date(article._source.published).toLocaleString()}</Col>
             </Row>
         </Container>)

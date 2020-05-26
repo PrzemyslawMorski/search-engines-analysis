@@ -23,6 +23,17 @@ code {
   margin: 0 10px;
 }
 
+.detail-header{
+  height: 200px;
+  background-color: #f2f2f2;
+}
+
+.header-info{
+  display: inline;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
 .mentions-map-miniature-section {
   text-align: center;
 }
