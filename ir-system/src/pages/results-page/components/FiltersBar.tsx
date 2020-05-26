@@ -48,10 +48,12 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
     }
 
     const onDateFromChanged = (value: Date) => {
+        console.log('dateFromChanged', value)
         setFilters(prevState => ({ ...prevState, dateFrom: value }));
     }
 
     const onDateToChanged = (value: Date) => {
+        console.log('dateToChanged', value)
         setFilters(prevState => ({ ...prevState, dateTo: value }));
     }
 
@@ -97,11 +99,11 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
             <Row className={"mt-1"}>
                 <Col sm={2}>
                     <label htmlFor="dateFrom">From date</label>
-                    <ReactDatePicker id={"dateFrom"} className={"form-control"} value={filters.dateFrom?.toLocaleDateString()} onChange={onDateFromChanged} />
+                    <ReactDatePicker id={"dateFrom"} className={"form-control"} selected={filters.dateFrom} onChange={onDateFromChanged} />
                 </Col>
                 <Col sm={2}>
                     <label htmlFor="dateTo">To date</label>
-                    <ReactDatePicker id={"dateTo"} className={"form-control"} value={filters.dateTo?.toLocaleDateString()} onChange={onDateToChanged} />
+                    <ReactDatePicker id={"dateTo"} className={"form-control"} selected={filters.dateTo} onChange={onDateToChanged} />
                 </Col>
             </Row>
         </Container>
