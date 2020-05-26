@@ -85,7 +85,7 @@ const ArticlePage = (props: any) => {
                             {articleData.organizations.map(organization =><h6><Link to={'/organisation/' + organization.replace(" ","-")}>{organization}</Link></h6>)}
                         <h3>Related</h3>
                             <h4>People</h4>
-                            {articleData.people.map(peopl =><h6><Link to={'/person/' + peopl.replace(" ","-")}>{peopl}</Link></h6>)}
+                            {articleData.people.map(peopl =><h6><Link to={'/person/' + peopl.replace(" ","-")+"/nonAuthor"}>{peopl}</Link></h6>)}
                             <h4>Locations</h4>
                             {articleData.locations}
                     </Col>

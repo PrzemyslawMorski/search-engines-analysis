@@ -26,13 +26,23 @@ const PersonPage = (props: any) => {
 
     const searchService: SearchService = new SearchService();
 
-    const queryBuilder = { 
+    let queryBuilder:any = { 
         "bool": { 
           "must": [
             { "match": { "author": props.match.params.name}}
           ],
         }
     };
+
+    if(props.match.params.nonAuthor){
+            queryBuilder = {
+                "term": {
+                "entities.persons.name.keyword": {
+                    "value": props.match.params.name.replace("-"," ")
+                }
+                }
+        }
+    }
 
     searchService.getCount({query: queryBuilder})
                 .then(count => {
