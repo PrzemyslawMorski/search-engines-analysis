@@ -10,6 +10,8 @@ import {Article} from "../../models/Article";
 import _ from "lodash";
 import SearchBar from "../../components/search-bar/SearchBar";
 import FiltersBar, {Filters} from "./components/FiltersBar";
+import logo from '../../assets/logo.png';
+import { Link } from "react-router-dom";
 
 
 const ResultsPage = () => {
@@ -52,8 +54,11 @@ const ResultsPage = () => {
     return (
         <Container fluid>
             <Row className={"mt-2 justify-content-sm-center"}>
-                <Col sm={8}>
+                <Col className={"d-flex"}>
+                    <Link to={'/'}><img src={logo} alt="logo" className="d-flex search-logo"/></Link>
+                    <div className={"flex-grow-1"}>
                     <SearchBar initialSearchInput={query} searched={onQueryChanged}/>
+                    </div>
                 </Col>
             </Row>
             <Row className={"mt-2 pb-2 justify-content-sm-between"} style={{borderBottom: "1px solid blue"}}>

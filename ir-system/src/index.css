@@ -17,3 +17,8 @@ code {
   height: 100px;
   border-radius: 100px;
 }
+
+.search-logo {
+  height: 45px;
+  margin: 0 10px;
+}

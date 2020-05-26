@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SearchBar from "../../components/search-bar/SearchBar";
+import logo from '../../assets/logo.png'
 import {Link, useHistory} from "react-router-dom";
 
 const MainPage = () => {
@@ -30,11 +31,12 @@ const MainPage = () => {
                 </Col>
             </Row>
 
+            <Row className={"d-flex justify-content-center"}>
+                <img src={logo} alt="logo" />
+            </Row>
+
             <Row>
                 <Col>
-                    <Row className={"mb-10 mt-10"}>
-                        <h2>Search page</h2>
-                    </Row>
                     <Row>
                         <SearchBar searched={searchedCallback}/>
                     </Row>
