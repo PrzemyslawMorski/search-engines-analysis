@@ -9,6 +9,7 @@ import queryString from 'query-string'
 import {Article} from "../../models/Article";
 import _ from "lodash";
 import SearchBar from "../../components/search-bar/SearchBar";
+import FiltersBar, {Filters} from "./components/FiltersBar";
 
 const ResultsPage = () => {
 
@@ -42,16 +43,24 @@ const ResultsPage = () => {
         setQuery(newQuery)
     }
 
+    function onFiltersChange(filters: Filters) {
+        console.log("Filters changed!")
+        console.log(filters)
+    }
+
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Row>
-                        <SearchBar initialSearchInput={query} searched={onQueryChanged}/>
-                    </Row>
+        <Container fluid>
+            <Row className={"mt-2 justify-content-sm-center"}>
+                <Col sm={8}>
+                    <SearchBar initialSearchInput={query} searched={onQueryChanged}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className={"mt-2 pb-2 justify-content-sm-between"} style={{borderBottom: "1px solid blue"}}>
+                <Col sm={10}>
+                    <FiltersBar onFiltersChange={onFiltersChange}/>
+                </Col>
+            </Row>
+            <Row className={"mt-2 justify-content-sm-center"}>
                 <Col sm={10}>
                     <InfiniteScroll
                         pageStart={0}
