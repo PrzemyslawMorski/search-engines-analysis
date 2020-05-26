@@ -66,13 +66,14 @@ class MapComponent extends React.Component {
           unknownColor="#666666"
           label="properties.name"
           valueFormat=".2s"
+          projectionType={this.props.miniature ? "orthographic" : "mercator"}
           projectionTranslation={[ 0.5, 0.5 ]}
           projectionRotation={[ 0, 0, 0 ]}
           enableGraticule={true}
           graticuleLineColor="#dddddd"
           borderWidth={0.5}
           borderColor="#152538"
-          legends={[
+          legends={this.props.miniature ? undefined : [
               {
                   anchor: 'bottom-left',
                   direction: 'column',

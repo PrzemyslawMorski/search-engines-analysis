@@ -36,7 +36,7 @@ const MapPage = () => {
             </Row>
             <Row className={"mt-2 justify-content-sm-center"}>
                 <Col sm={8}>
-                    <div style={{ height: "400px" }}>
+                    <div className="mentions-map-container">
                         <MapComponent />
                     </div>
                 </Col>

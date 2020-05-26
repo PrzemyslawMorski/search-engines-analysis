@@ -81,11 +81,11 @@ const ResultsPage = () => {
 
                     </InfiniteScroll>
                 </Col>
-                <Col sm={2}>
+                <Col sm={2} className="mentions-map-miniature-section">
                     Mentions Map
                     <Link to={'/map'}>
-                        <div style={{ height: "100px" }}>
-                            <MapComponent />
+                        <div className="mentions-map-miniature-container">
+                            <MapComponent miniature />
                         </div>
                     </Link>
                 </Col>

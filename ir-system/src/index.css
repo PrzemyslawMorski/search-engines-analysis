@@ -22,3 +22,16 @@ code {
   height: 45px;
   margin: 0 10px;
 }
+
+.mentions-map-miniature-section {
+  text-align: center;
+}
+
+.mentions-map-miniature-container {
+  height: 200px;
+  margin-top: 10px;
+}
+
+.mentions-map-container {
+  height: 400px;
+}
