@@ -28,9 +28,7 @@ export default class SearchService {
         }
 
         if (elasticsearchFilters.length > 0) {
-            body.bool = {
-                "filter": elasticsearchFilters
-            }
+            body.query.bool.filter = elasticsearchFilters;
         }
     }
 
@@ -41,15 +39,19 @@ export default class SearchService {
         ];
 
         body["query"] = {
-            "multi_match": {
-                "query": query,
-                "fields": [
-                    "title",
-                    "text",
-                    "entities.locations.name",
-                    "entities.organizations.name",
-                    "entities.persons.name"
-                ]
+            "bool": {
+                "must": {
+                    "multi_match": {
+                        "query": query,
+                        "fields": [
+                            "title",
+                            "text",
+                            "entities.locations.name",
+                            "entities.organizations.name",
+                            "entities.persons.name"
+                        ]
+                    }
+                }
             }
         }
 
@@ -65,11 +67,11 @@ export default class SearchService {
         let result: Article[] = [];
 
         const body: any = {
-            size: 10
+            size: 20
         };
 
-        this.setFilters(body, filters);
         this.setSortAndQuery(body, query);
+        this.setFilters(body, filters);
 
         const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
         console.log(response.data);
@@ -120,8 +122,8 @@ export default class SearchService {
             }
         };
 
-        this.setFilters(body, filters);
         this.setSortAndQuery(body, query);
+        this.setFilters(body, filters);
 
         const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
         result = response.data.aggregations.genres.buckets

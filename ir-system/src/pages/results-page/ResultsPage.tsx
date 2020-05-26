@@ -29,9 +29,9 @@ const ResultsPage = () => {
     const searchService: SearchService = new SearchService();
 
     useEffect(() => {
-        console.log('sdasd')
         searchService.loadArticles(query, filters).then(articles => {
-            setResults(articles)
+            setHasMore(!!articles && articles.length !== 0)
+            setResults(() => articles)
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -33,33 +33,31 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
     const onLocationsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, locations: (value as Filter[]) }))
-        onFiltersChange(filters);
     }
 
     const onOrganisationsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, organisations: (value as Filter[]) }))
-        onFiltersChange(filters);
     }
 
     const onPeopleChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, people: (value as Filter[]) }))
-        onFiltersChange(filters);
     }
 
     const onAuthorsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, authors: (value as Filter[]) }));
-        onFiltersChange(filters);
     }
 
     const onDateFromChanged = (value: Date) => {
         setFilters(prevState => ({ ...prevState, dateFrom: value }));
-        onFiltersChange(filters);
     }
 
     const onDateToChanged = (value: Date) => {
         setFilters(prevState => ({ ...prevState, dateTo: value }));
-        onFiltersChange(filters);
     }
+
+    useEffect(() => {
+        onFiltersChange(filters);
+    }, [onFiltersChange, filters]);
 
     useEffect(() => {
         const searchService = new SearchService();
@@ -71,7 +69,7 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
         searchService.aggregateByQuery(query, FilterFields.Organisations).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, organisations: filters })));
-            
+
         searchService.aggregateByQuery(query, FilterFields.People).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, people: filters })));
     }, [query]);
