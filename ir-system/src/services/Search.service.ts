@@ -70,7 +70,7 @@ export default class SearchService {
             size: 20
         };
 
-        this.setSortAndQuery(body, query);
+        this.setSortAndQuery(body, query, last);
         this.setFilters(body, filters);
 
         const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);

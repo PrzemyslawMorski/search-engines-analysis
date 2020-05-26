@@ -50,11 +50,6 @@ const ResultsPage = () => {
     }
 
     function onFiltersChange(filters: Filters) {
-        // searchService.loadFilteredArticles(query, filters).then(articles => {
-        //     setHasMore(!!articles && articles.length !== 0)
-        //     setResults(prevState => [...prevState, ...articles])
-        // })
-
         setFilters(filters);
     }
 
