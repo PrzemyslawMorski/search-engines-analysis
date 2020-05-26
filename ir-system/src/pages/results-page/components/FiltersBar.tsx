@@ -72,7 +72,7 @@ const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
         searchService.aggregateByQuery(query, FilterFields.People).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, people: filters })));
-    }, [query]);
+    }, [query])
 
     return (
         <Container>

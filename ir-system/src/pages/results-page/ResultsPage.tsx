@@ -30,8 +30,8 @@ const ResultsPage = () => {
 
     useEffect(() => {
         searchService.loadArticles(query, filters).then(articles => {
-            setHasMore(!!articles && articles.length !== 0)
             setResults(() => articles)
+            setHasMore(!!articles && articles.length !== 0)
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,8 +39,8 @@ const ResultsPage = () => {
 
     const loadMore = () => {
         searchService.loadArticles(query, filters, _.last(results)).then(articles => {
-            setHasMore(!!articles && articles.length !== 0)
             setResults(prevState => [...prevState, ...articles])
+            setHasMore(!!articles && articles.length !== 0)
         })
     };
 
