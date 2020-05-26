@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Select, { ValueType } from 'react-select'
 import ReactDatePicker from "react-datepicker";
-import FiltersBarService, { FilterFields } from "./FiltersBar.service"
+import SearchService from '../../../services/Search.service';
 
 type FiltersBarProps = Readonly<{
+    query: string,
     onFiltersChange: (filters: Filters) => void
 }>
 
-const FiltersBar = ({ onFiltersChange }: FiltersBarProps) => {
+export enum FilterFields {
+    Locations = "entities.locations.name.keyword",
+    People = "entities.persons.name.keyword",
+    Authors = "author.keyword",
+    Organisations = "entities.organizations.name.keyword"
+}
+
+const FiltersBar = ({ query, onFiltersChange }: FiltersBarProps) => {
 
     const initialFilters: Filters = { locations: undefined, authors: undefined, people: undefined, organisations: undefined, dateFrom: undefined, dateTo: undefined }
     const initialAvailableFilters: Filters = { locations: [], authors: [], organisations: [], people: [] };
@@ -16,46 +24,47 @@ const FiltersBar = ({ onFiltersChange }: FiltersBarProps) => {
     const [filters, setFilters] = useState<Filters>(initialFilters)
     const [availableFilters, setAvailableFilters] = useState<Filters>(initialAvailableFilters)
 
-
     const onLocationsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, locations: (value as Filter[]) }))
+        onFiltersChange(filters);
     }
 
     const onOrganisationsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, organisations: (value as Filter[]) }))
+        onFiltersChange(filters);
     }
 
     const onPeopleChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, people: (value as Filter[]) }))
+        onFiltersChange(filters);
     }
 
     const onAuthorsChanged = (value: ValueType<Filter>) => {
         setFilters(prevState => ({ ...prevState, authors: (value as Filter[]) }));
+        onFiltersChange(filters);
     }
 
     const onDateFromChanged = (value: Date) => {
         setFilters(prevState => ({ ...prevState, dateFrom: value }));
+        onFiltersChange(filters);
     }
 
     const onDateToChanged = (value: Date) => {
         setFilters(prevState => ({ ...prevState, dateTo: value }));
+        onFiltersChange(filters);
     }
 
     useEffect(() => {
-        onFiltersChange(filters)
-    });
-
-    useEffect(() => {
-        const filtersBarService = new FiltersBarService();
-        filtersBarService.aggregateFilter(FilterFields.Locations, true).then((filters) =>
+        const searchService = new SearchService();
+        searchService.aggregateByQuery(query, FilterFields.Locations).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, locations: filters })));
-        filtersBarService.aggregateFilter(FilterFields.Authors).then((filters) =>
+        searchService.aggregateByQuery(query, FilterFields.Authors).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, authors: filters })));
-        filtersBarService.aggregateFilter(FilterFields.Organisations).then((filters) =>
+        searchService.aggregateByQuery(query, FilterFields.Organisations).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, organisations: filters })));
-        filtersBarService.aggregateFilter(FilterFields.People).then((filters) =>
+        searchService.aggregateByQuery(query, FilterFields.People).then((filters) =>
             setAvailableFilters(prevState => ({ ...prevState, people: filters })));
-    }, []);
+    }, [query]);
 
     return (
         <Container>

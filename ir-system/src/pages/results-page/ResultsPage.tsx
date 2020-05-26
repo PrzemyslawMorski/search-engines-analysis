@@ -34,7 +34,7 @@ const ResultsPage = () => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query])
 
-    let loadMore = () => {
+    const loadMore = () => {
         searchService.loadArticles(query, _.last(results)).then(articles => {
             setHasMore(!!articles && articles.length !== 0)
             setResults(prevState => [...prevState, ...articles])
@@ -63,7 +63,7 @@ const ResultsPage = () => {
             </Row>
             <Row className={"mt-2 pb-2 justify-content-sm-between"} style={{borderBottom: "1px solid blue"}}>
                 <Col sm={10}>
-                    <FiltersBar onFiltersChange={onFiltersChange}/>
+                    <FiltersBar query={query} onFiltersChange={onFiltersChange}/>
                 </Col>
             </Row>
             <Row className={"mt-2 justify-content-sm-center"}>
