@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { Col, Container, Row } from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import logo from '../../assets/logo.png'
 import {Link, useHistory} from "react-router-dom";
 import SearchBar from "../../components/search-bar/SearchBar";
@@ -67,6 +67,9 @@ const OrganisationPage = (props: any) => {
     return (
             <Container>
                 <Row>
+                    <Col sm={"auto"} className={"mt-2"}>
+                        <Button size="sm" variant="outline-dark" onClick={() => history.goBack()}>Back</Button>
+                    </Col>
                     <Col className={"d-flex"}>
                         <Link to={'/'}><img src={logo} alt="logo" className="d-flex search-logo"/></Link>
                         <div className={"flex-grow-1"}>
