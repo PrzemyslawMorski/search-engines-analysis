@@ -58,8 +58,10 @@ const ArticlePage = (props: any) => {
     return (
             <Container>
                 <Row>
-                    <Col className={"d-flex"}>
+                    <Col sm={"auto"} className={"mt-2"}>
                         <Button size="sm" variant="outline-dark" onClick={() => history.goBack()}>Back</Button>
+                    </Col>
+                    <Col className={"d-flex"}>
                         <Link to={'/'}><img src={logo} alt="logo" className="d-flex search-logo"/></Link>
                         <div className={"flex-grow-1"}>
                         <SearchBar searched={searchedCallback}/>
