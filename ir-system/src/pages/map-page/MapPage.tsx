@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router";
-import { Col, Container, Row } from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import SearchBar from "../../components/search-bar/SearchBar";
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png';
@@ -22,6 +22,9 @@ const MapPage = () => {
     return (
         <Container fluid>
             <Row className={"mt-2 justify-content-sm-center"}>
+                <Col sm={"auto"} className={"mt-2"}>
+                    <Button size="sm" variant="outline-dark" onClick={() => history.goBack()}>Back</Button>
+                </Col>
                 <Col className={"d-flex"}>
                     <Link to={'/'}><img src={logo} alt="logo" className="d-flex search-logo"/></Link>
                     <div className={"flex-grow-1"}>
