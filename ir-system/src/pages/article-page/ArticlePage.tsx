@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import logo from '../../assets/logo.png'
 import {Link, useHistory} from "react-router-dom";
 import SearchBar from "../../components/search-bar/SearchBar";
@@ -59,6 +59,7 @@ const ArticlePage = (props: any) => {
             <Container>
                 <Row>
                     <Col className={"d-flex"}>
+                        <Button size="sm" variant="outline-dark" onClick={() => history.goBack()}>Back</Button>
                         <Link to={'/'}><img src={logo} alt="logo" className="d-flex search-logo"/></Link>
                         <div className={"flex-grow-1"}>
                         <SearchBar searched={searchedCallback}/>
