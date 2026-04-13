@@ -1,10 +1,24 @@
-import axios from "axios";
 import { Article } from "../models/Article";
 import { SearchResponse } from '../models/SearchResponse';
 import constants from '../config/constants';
 import { Filter, Filters, FilterFields } from '../pages/results-page/components/FiltersBar';
 
 export default class SearchService {
+    private async postJson<TResponse>(url: string, body: unknown): Promise<TResponse> {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        return response.json();
+    }
 
     private setFilters(body: any, filters?: Filters) {
         const elasticsearchFilters: any[] = [];
@@ -73,9 +87,9 @@ export default class SearchService {
         this.setSortAndQuery(body, query, last);
         this.setFilters(body, filters);
 
-        const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
-        console.log(response.data);
-        result = response.data.hits.hits;
+        const response = await this.postJson<SearchResponse<Article>>(constants.news_articles_search_url, body);
+        console.log(response);
+        result = response.hits.hits;
 
         return result;
     }
@@ -101,9 +115,9 @@ export default class SearchService {
             body.search_after = [last._score, last._source.uuid];
         }
         console.log(body);
-        const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
-        console.log(response.data);
-        result = response.data.hits.hits;
+        const response = await this.postJson<SearchResponse<Article>>(constants.news_articles_search_url, body);
+        console.log(response);
+        result = response.hits.hits;
 
         return result;
     }
@@ -125,8 +139,8 @@ export default class SearchService {
         this.setSortAndQuery(body, query);
         this.setFilters(body, filters);
 
-        const response = await axios.post<SearchResponse<Article>>(constants.news_articles_search_url, body);
-        result = response.data.aggregations.genres.buckets
+        const response = await this.postJson<SearchResponse<Article>>(constants.news_articles_search_url, body);
+        result = response.aggregations.genres.buckets
             .filter(bucketItem => bucketItem.key !== '')
             .map(bucketItem => ({
                 label: `${(bucketItem.key as string).toLocaleUpperCase()} (${bucketItem.doc_count})`,
@@ -138,8 +152,8 @@ export default class SearchService {
 
     async getCount(query: any): Promise<number> {
         console.log("getting count of: ", query);
-        const response = await axios.post<{ count: number }>(constants.news_articles_count_url, query);
+        const response = await this.postJson<{ count: number }>(constants.news_articles_count_url, query);
         console.log("got count response", response);
-        return response.data.count;
+        return response.count;
     }
 }

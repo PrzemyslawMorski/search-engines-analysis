@@ -7,7 +7,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "@types/axios": "^0.14.0",
     "@types/jest": "^24.9.1",
     "@types/jquery": "^3.3.38",
     "@types/lodash": "^4.14.150",
@@ -20,7 +19,6 @@
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/react-select": "^3.0.13",
-    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "create-react-class": "^15.6.3",
     "jquery": "^3.5.1",
@@ -58,6 +56,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }
