@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import constants from '../../config/constants';
 import { ResponsiveChoropleth } from "@nivo/geo";
 import features from "./features.json";
@@ -17,35 +16,47 @@ class MapComponent extends React.Component {
   }
 
 
-  componentDidMount() {
-    countries.forEach(country => {
+  async componentDidMount() {
+    countries.forEach(async country => {
       const body = {
         "query": {
-            "multi_match": {
-                "query": country.name,
-                "fields": [
-                    "title",
-                    "text",
-                    "entities.locations.name",
-                    "entities.organizations.name",
-                    "entities.persons.name"
-                ]
-            }
+          "multi_match": {
+            "query": country.name,
+            "fields": [
+              "title",
+              "text",
+              "entities.locations.name",
+              "entities.organizations.name",
+              "entities.persons.name"
+            ]
+          }
         }
       };
-      axios.post(constants.news_articles_count_url, body).then(res => 
-        this.setState({
-          data: [
-            ...this.state.data,
-            {
-              id: country.id,
-              value: res.data.count,
-            }
-          ],
-          max: res.data.count > this.state.max ? res.data.count : this.state.max,
-        })
-      )
-    })
+
+      const response = await fetch(constants.news_articles_count_url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const data = await response.json();
+      this.setState((prevState) => ({
+        data: [
+          ...prevState.data,
+          {
+            id: country.id,
+            value: data.count,
+          }
+        ],
+        max: data.count > prevState.max ? data.count : prevState.max,
+      }));
+    });
   }
 
   render() {
